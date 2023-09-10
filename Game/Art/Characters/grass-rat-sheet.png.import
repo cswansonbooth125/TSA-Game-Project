@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcdt7a7yyger0"
-path="res://.godot/imported/char-s.png-ba17f27e5f3b54a4dde1f5f5f2fb569a.ctex"
+uid="uid://bxs36c0xgtld"
+path="res://.godot/imported/grass-rat-sheet.png-d4d115bf4aae264909b3447accb91ecc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/char-s.png"
-dest_files=["res://.godot/imported/char-s.png-ba17f27e5f3b54a4dde1f5f5f2fb569a.ctex"]
+source_file="res://Art/Characters/grass-rat-sheet.png"
+dest_files=["res://.godot/imported/grass-rat-sheet.png-d4d115bf4aae264909b3447accb91ecc.ctex"]
 
 [params]
 
