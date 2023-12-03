@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var moveSpeed : float = 100
+@export var move_speed : float = 100
 @export var startingDirection : Vector2 = Vector2(0,1)
 
 #parameters/walk/blend_position
@@ -20,7 +20,7 @@ func _physics_process(_delta):
 	update_animation_parameters(inputDirection)
 	
 	#update velocity
-	velocity = inputDirection * moveSpeed
+	velocity = inputDirection * move_speed
 	#move and slide function
 	move_and_slide()
 	
