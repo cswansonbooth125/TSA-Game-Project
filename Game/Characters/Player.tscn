@@ -141,13 +141,11 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_82k70")
-moveSpeed = 125.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_frs1n")
 hframes = 4
 vframes = 4
-frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0.5, 12.5)
@@ -159,8 +157,20 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_4h3aj")
+}
 tree_root = SubResource("AnimationNodeStateMachine_1qjad")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(2, 2)
+position_smoothing_speed = 1.5
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
