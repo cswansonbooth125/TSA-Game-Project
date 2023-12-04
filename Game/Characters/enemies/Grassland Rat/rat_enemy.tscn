@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqskqqchnsfs0"]
+
+[ext_resource type="Script" path="res://rat_enemy.gd" id="1_h72br"]
+[ext_resource type="Texture2D" uid="uid://bxs36c0xgtld" path="res://Art/Characters/grass-rat-sheet.png" id="2_obw7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72748"]
+atlas = ExtResource("2_obw7f")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt3qr"]
+atlas = ExtResource("2_obw7f")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h2hi"]
+atlas = ExtResource("2_obw7f")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpd6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72748")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt3qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h2hi")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lle5c"]
+size = Vector2(20, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0svvv"]
+size = Vector2(22, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hd8n"]
+radius = 65.0
+
+[node name="rat_enemy" type="CharacterBody2D"]
+script = ExtResource("1_h72br")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wpd6h")
+animation = &"walk_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_lle5c")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0svvv")
+
+[node name="detection_area" type="Area2D" parent="."]
+disable_mode = 1
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_4hd8n")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
