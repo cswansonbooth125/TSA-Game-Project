@@ -1,0 +1,160 @@
+[gd_scene load_steps=17 format=3 uid="uid://b1fx57ibg8rq5"]
+
+[ext_resource type="Script" path="res://Characters/Player/Player.gd" id="1_82k70"]
+[ext_resource type="Texture2D" uid="uid://cym1qayxykybd" path="res://Art/Characters/player-spritesheet.png" id="2_frs1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u0oy"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8q2f"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geh4t"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv136"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcicc"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86qwh"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wubmd"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mgfi"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mao0y"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51s8x"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cdim"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u507g"]
+atlas = ExtResource("2_frs1n")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jphxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u0oy")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8q2f")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geh4t")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv136")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcicc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86qwh")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wubmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mgfi")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mao0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51s8x")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cdim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u507g")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tw3w"]
+size = Vector2(17, 7)
+
+[node name="player" type="Node2D" groups=["player"]]
+z_index = 2
+z_as_relative = false
+
+[node name="player" type="CharacterBody2D" parent="."]
+z_as_relative = false
+script = ExtResource("1_82k70")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+sprite_frames = SubResource("SpriteFrames_jphxr")
+animation = &"idle_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_1tw3w")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_speed = 1.5
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
