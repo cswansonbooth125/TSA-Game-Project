@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp54wti06w427"]
+
+[ext_resource type="Script" path="res://spell_attack.gd" id="1_ca818"]
+[ext_resource type="Texture2D" uid="uid://ngnffyo365q0" path="res://Art/effects/png/placeholder_attack.png" id="2_jttfd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gusp"]
+size = Vector2(20, 10)
+
+[node name="spell_attack" type="Area2D"]
+script = ExtResource("1_ca818")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jttfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6gusp")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+scale = Vector2(0.2, 0.2)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://t2mgaaayw602"]
+
+[ext_resource type="Texture2D" uid="uid://quughjkypvjc" path="res://Art/gui/statusbar-Sheet.png" id="1_clvfv"]
+
+[node name="player_status" type="HBoxContainer"]
+offset_right = 33.0
+offset_bottom = 31.0
+
+[node name="health_container" type="Sprite2D" parent="."]
+position = Vector2(24, 16)
+texture = ExtResource("1_clvfv")
+hframes = 14
+vframes = 2
+frame = 13
+
+[node name="mana_container" type="Sprite2D" parent="."]
+position = Vector2(8, 16)
+texture = ExtResource("1_clvfv")
+hframes = 14
+vframes = 2
+frame = 26
