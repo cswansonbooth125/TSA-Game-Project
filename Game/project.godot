@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/stretch/scale=1.5
 mouse_cursor/custom_image="res://Art/gui/cursor-static.png"
 
 [input]

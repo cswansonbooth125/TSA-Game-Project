@@ -228,7 +228,16 @@ shape = SubResource("RectangleShape2D_g75l3")
 
 [node name="Damage_cooldown" type="Timer" parent="player"]
 
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(1.5, 1.5)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Mana_cooldown" type="Timer" parent="player"]
+one_shot = true
+
 [connection signal="area_entered" from="player/player_hitbox" to="player" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="player/player_hitbox" to="player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player/player_hitbox" to="player" method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="player/Damage_cooldown" to="player" method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="player/Mana_cooldown" to="player" method="_on_mana_cooldown_timeout"]

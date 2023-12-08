@@ -4,6 +4,7 @@ class_name Player
 
 const max_speed = 500
 var health = 3
+var mana = 3
 var dead = false
 var enemy_attack_cooldown = true
 var enemy_in_hitbox = false
@@ -17,7 +18,7 @@ var spell = preload("res://Scenes/spell_attack.tscn")
 func _physics_process(delta):
 	player_movement()
 	enemy_attack()
-	
+	regenerate_mana()
 	if health <= 0:
 		dead = true
 		
@@ -35,7 +36,8 @@ func player_movement():
 	var mouse_pos = get_global_mouse_position()
 	$Marker2D.look_at(mouse_pos)
 	
-	if Input.is_action_just_pressed("left_mouse") and spell_cooldown:
+	if Input.is_action_just_pressed("left_mouse") and spell_cooldown and mana > 0:
+		mana -= 1
 		spell_cooldown = false
 		var spell_instance = spell.instantiate()
 		spell_instance.rotation = $Marker2D.rotation
@@ -110,3 +112,14 @@ func enemy_attack():
 
 func _on_damage_cooldown_timeout():
 	enemy_attack_cooldown = true
+
+func regenerate_mana():
+	print(mana)
+	if mana < 3:
+		$Mana_cooldown.start()
+		
+
+
+func _on_mana_cooldown_timeout():
+	if mana < 3:
+		mana += 1
